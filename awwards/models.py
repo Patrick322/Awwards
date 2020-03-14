@@ -23,4 +23,12 @@ class Profile(models.Model):
 
     @classmethod
     def update_name(cls,id,new_First_Name):
-        cls.objects        
+        cls.objects.filter(user_id = id).update(First_name=new_first_Name)
+        new_title_object = cls.objects.get(First_Name=new_first_Name)
+        new_name = new_title_object.first_Name 
+        return new_name
+
+    @classmethod
+    def get_user_profile(cls,id):
+        profile = cls.objects.get(user_id=id)
+        return profile       
