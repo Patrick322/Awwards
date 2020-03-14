@@ -68,4 +68,13 @@ class Post(models.Model):
     @classmethod
     def get_single_projects(cls,id):
         post = cls.object.get(pk=id)
-        return post                              
+        return post 
+
+ class Review(models.Model):
+     title = models.CharField(max_length=50) 
+     review = models.TextField()
+     design = models.PositiveIntegerField(default=0)
+     usability = models.PositiveIntegerField(default=0)
+     content = models.PositiveIntegerField(default=0)
+     post = models.ForeignKey(Post,on_delete=models.CASCADE)
+     user = models.ForeignKey(User,on_delete=models.CASCADE)                               
