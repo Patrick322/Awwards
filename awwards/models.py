@@ -53,4 +53,7 @@ class Post(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def save_post(self):
-        self.save()                      
+        self.save()
+
+    def delete_post(self):
+        self.delete()                          
