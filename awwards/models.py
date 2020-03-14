@@ -31,4 +31,11 @@ class Profile(models.Model):
     @classmethod
     def get_user_profile(cls,id):
         profile = cls.objects.get(user_id=id)
-        return profile       
+        return profile
+
+
+
+
+@receiver(post_save,sender=User)
+def create_profile(sender, instance,created,**kwargs):
+    if           
