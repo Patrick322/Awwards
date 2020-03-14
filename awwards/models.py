@@ -45,4 +45,12 @@ def create_profile(sender, instance,created,**kwargs):
 def save _profile(sender, instance,**kwargs):
     instace.profile.save()
 
-class Post(models.Model):                       
+class Post(models.Model): 
+    title = models.CharField(max_length=30)
+    image = models.ImageField(upload_to='post/')
+    description = HTMLField()
+    link = models.CharField(max_length=500)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+
+    def save_post(self):
+        self.save()                      
