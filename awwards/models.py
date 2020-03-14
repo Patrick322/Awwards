@@ -56,4 +56,11 @@ class Post(models.Model):
         self.save()
 
     def delete_post(self):
-        self.delete()                          
+        self.delete()
+
+    @classmethod
+    def update_title(cls,id,new_title):
+        cls.objects.filter(pk = id).update(title=new_title)
+        new_title_object = cls.objects.get(title=new_title)
+        new_title = new_title_object.title
+        return new_title                              
