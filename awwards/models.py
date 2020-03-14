@@ -7,4 +7,20 @@ from django.dispatch import receiver
 
 
 class Profile(models.Model):
-    
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    Email = models.EmailField(max_length=50)
+    user = models.OneToOneField(user,on_delete=models.CASCADE,primary_key=True)
+    profile_pic = models.ImageField(upload_to'images/' , default='image/')
+
+
+
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.save()
+
+    @classmethod
+    def update_name(cls,id,new_First_Name):
+        cls.objects        
