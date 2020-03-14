@@ -63,4 +63,9 @@ class Post(models.Model):
         cls.objects.filter(pk = id).update(title=new_title)
         new_title_object = cls.objects.get(title=new_title)
         new_title = new_title_object.title
-        return new_title                              
+        return new_title
+
+    @classmethod
+    def get_single_projects(cls,id):
+        post = cls.object.get(pk=id)
+        return post                              
