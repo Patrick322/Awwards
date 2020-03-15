@@ -1,0 +1,9 @@
+beautifulsoup4==4.8.2
+Django==1.11
+django-bootstrap4==1.1.1
+django-ratings==0.3.7
+django-tinymce==2.8.0
+djangorestframework==3.11.0
+Pillow==7.0.0
+pytz==2019.3
+soupsieve==2.0

@@ -1,22 +1,20 @@
 from django.shortcuts import render
-
-# Create your views here.
 from .models import *
 from .forms import ProjectUpload,ProfileForm
-from django.contrib.auth.decorators import login _required
+from django.contrib.auth.decorators import login_required
 from rest_framework import viewsets
-from .serializers import PostSerializer,ProfileSerializer
+
 
 def home(request):
     projects = Post.objects.all()
-    return render(request, 'myprojects/index.html',{"projects":projects})
+    return render(request, 'projects/index.html',{"projects":projects})
 
 @login_required (login_url='/accounts/login/?next=/')
 def new_projects(request):
     current_user = request.current_user
     if request.method == 'POST':
         form = ProjectUpload(request.POST,request).FILES
-        if form.is valid():
+        if form.is_valid():
             project = form.save(commit=False)
             project.user = current_user
             project.save()
@@ -39,17 +37,17 @@ def search_project(request):
         return render(request, 'myprojects/search.html',{"message":message})
 
 
- def update_profile(request):
+def update_profile(request):
      user_profile = Profile.objets.get(user=request.user)
 
      if request.method =='POST':
-         form = UploadProfileForm(request.POST,request.FILES,instance=request,user.Profile)
+         form = UploadProfileForm(request.POST,request.FILES)
          if form.is_valid():
              form.save()
          return redirect('home')
-    else:
+     else:
         form = UpdateProfileForm(instance=request.user.profile)
-        return render(request, 'myprojects/update-prof.html',{'form' ;form})
+        return render(request, 'myprojects/update-prof.html',{'form': form})
 
 def profile_info(request):
 
@@ -58,17 +56,17 @@ def profile_info(request):
     projects = request.user.post.all()
 
 
-    return render(request, 'myprojects/profile.html',{"projects":projects,"profile":profile_info,"current_user":current_user})
+    return render(request, 'projects/profile.html',{"projects":projects,"profile":profile_info,"current_user":current_user})
 
 
 
-class PostViewset(viewsets.modelViewSet):
+class PostViewset(viewsets.ModelViewSet):
     '''
     API endpoint that allowsone to view the detaails of projects posted
     '''
 
-    querryset = Post.objects.all().order_by(title)
-    serializer_class = PostSerializer
+    querryset = Post.objects.all().order_by()
+
 
 
 class ProfileViewset(viewsets.ModelViewSet):
@@ -77,4 +75,4 @@ class ProfileViewset(viewsets.ModelViewSet):
     '''
 
     querryset = Profile.objects.all()
-    serializer_class = ProfileSerializer        
+          
