@@ -38,5 +38,43 @@ def search_project(request):
         message = "You haven't searched for any term "
         return render(request, 'myprojects/search.html',{"message":message})
 
-    
-        
+
+ def update_profile(request):
+     user_profile = Profile.objets.get(user=request.user)
+
+     if request.method =='POST':
+         form = UploadProfileForm(request.POST,request.FILES,instance=request,user.Profile)
+         if form.is_valid():
+             form.save()
+         return redirect('home')
+    else:
+        form = UpdateProfileForm(instance=request.user.profile)
+        return render(request, 'myprojects/update-prof.html',{'form' ;form})
+
+def profile_info(request):
+
+    current_user = request_user
+    profile_user = Profile.objects.filter(user=current_user).first()
+    projects = request.user.post.all()
+
+
+    return render(request, 'myprojects/profile.html',{"projects":projects,"profile":profile_info,"current_user":current_user})
+
+
+
+class PostViewset(viewsets.modelViewSet):
+    '''
+    API endpoint that allowsone to view the detaails of projects posted
+    '''
+
+    querryset = Post.objects.all().order_by(title)
+    serializer_class = PostSerializer
+
+
+class ProfileViewset(viewsets.ModelViewSet):
+    '''
+    API endpoint that allows one to view the details of profiles
+    '''
+
+    querryset = Profile.objects.all()
+    serializer_class = ProfileSerializer        
