@@ -1,7 +1,9 @@
 beautifulsoup4==4.8.2
+confusable-homoglyphs==3.2.0
 Django==1.11
 django-bootstrap4==1.1.1
 django-ratings==0.3.7
+django-registration==2.4.1
 django-tinymce==2.8.0
 djangorestframework==3.11.0
 Pillow==7.0.0
