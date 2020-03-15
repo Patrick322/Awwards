@@ -12,4 +12,31 @@ def home(request):
     return render(request, 'myprojects/index.html',{"projects":projects})
 
 @login_required (login_url='/accounts/login/?next=/')
+def new_projects(request):
+    current_user = request.current_user
+    if request.method == 'POST':
+        form = ProjectUpload(request.POST,request).FILES
+        if form.is valid():
+            project = form.save(commit=False)
+            project.user = current_user
+            project.save()
+            return redirect('home')
+    else:
+        form = ProjectUpload()
+        return render(request,'myprojects/new_post.html',{"form":form})
+
+def search_project(request):
+
+    if 'search' in request.GET and request.GET["search"]:
+
+        search_term = request.GET.get("search")
+        searched_projects = Post.objects.filter(title__icontains=search_term)
+        message = f"{search_term}"
+        return render(request, 'myprojects/search.html',{"message":message, "projects":searched_project})
+
+    else:
+        message = "You haven't searched for any term "
+        return render(request, 'myprojects/search.html',{"message":message})
+
     
+        
