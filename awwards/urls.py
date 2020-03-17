@@ -8,6 +8,9 @@ urlpatterns = [
     url(r'^search/$', views.search_project, name='search_project'),
     url(r'^profile/$', views.profile_info, name='profile_info'),
     url(r'^projects/$', views.new_projects, name='new_projects'),
+    url(r'^project/(\d+)$', views.single_project, name='project'),
+    url(r'^rating/(\d+)$', views.review_rating, name="review")
+
 
     
 
