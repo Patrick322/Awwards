@@ -46,7 +46,10 @@ python manage.py makemigrations awwardsapp
  ```bash 
  python manage.py test 
 ```
-Open the application on your browser `127.0.0.1:8000`. 
+Open the application on your browser `127.0.0.1:8000`.
+
+## Database Diagram
+![](media/post/Untitled.png)
 
 ## Technologies Used
 * Python3.6
