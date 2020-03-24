@@ -53,3 +53,8 @@ Open the application on your browser `127.0.0.1:8000`.
 * Django
 * HTML
 * Bootstrap
+
+## Contacts
+Email:patrickbuong@gmail.com
+Tel:0797239875
+Github:Patrick322
