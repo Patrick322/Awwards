@@ -49,7 +49,7 @@ python manage.py makemigrations awwardsapp
 Open the application on your browser `127.0.0.1:8000`.
 
 ## Database Diagram
-![](media/post/Untitled(1).png)
+![](media/photos/Untitled(1).png)
 
 ## Technologies Used
 * Python3.6
