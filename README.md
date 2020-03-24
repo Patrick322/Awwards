@@ -11,7 +11,7 @@ This application allows users to post,rate and view the project posted by users.
 ## Setup and installation
 ##### Clone the repository:  
  ```bash 
- https://github.com/cynthiaoduol/project-awwards.git 
+ https://github.com/Patrick322/Awwards.git 
 ```
 
 ##### Install and activate Virtual  
