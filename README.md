@@ -47,3 +47,9 @@ python manage.py makemigrations awwardsapp
  python manage.py test 
 ```
 Open the application on your browser `127.0.0.1:8000`. 
+
+## Technologies Used
+* Python3.6
+* Django
+* HTML
+* Bootstrap
